@@ -1,4 +1,3 @@
-//didnt understood why i should make it in a seperated Class if i can use it as a regular function **(תאריך תפוגה (מחלקה נפרדת))**
 function randomDate(start, end) {
     return new Date(
       start.getTime() + Math.random() * (end.getTime() - start.getTime())
@@ -53,44 +52,35 @@ function randomDate(start, end) {
     //exp date today
     public isExpired() {
       if (this.date > new Date()) {
-          return false;
+        return false;
       } else {
-          return true;
+        return true;
       }
     }
     // Printing to UI
     public printProductToTable(product) {
       const tBody = document.getElementById("tbody");
       const tr: HTMLElement = document.createElement("tr");
-  
-      const tdName: HTMLElement = document.createElement("td");
-      tdName.innerText = product.name;
-  
-      const tdPrice: HTMLElement = document.createElement("td");
+      
+      
+      const tdName: HTMLElement = _getTd();
+      const tdPrice: HTMLElement = _getTd();
+      const tdIsKosher: HTMLElement = _getTd();
+      const tdWeight: HTMLElement = _getTd();
+      const tdManufacturer: HTMLElement = _getTd();
+      const priceForKiloT: any = _getTd();
+      const dateProduct: HTMLElement = _getTd();
+      const isProductExp: HTMLElement = _getTd();
+      
       tdPrice.innerText = product.price;
-  
-      const tdWeight: HTMLElement = document.createElement("td");
+      tdName.innerText = product.name;
       tdWeight.innerText = product.weight;
-  
-      const tdIsKosher: HTMLElement = document.createElement("td");
       tdIsKosher.innerText = product.isKosher;
-  
-      const tdManufacturer: HTMLElement = document.createElement("td");
       tdManufacturer.innerText = product.manufacturer;
-  
-      const priceForKiloT: any = document.createElement("td");
       priceForKiloT.innerText = product.priceForKilo()
-  
-      
-  
-      const dateProduct: HTMLElement = document.createElement("td");
       dateProduct.innerText = product.date;
-      
-      const isProductExp: HTMLElement = document.createElement("td");
       isProductExp.innerText = product.isExpired();
-
-
-  
+      
       tr.append(tdName);
       tr.append(tdPrice);
       tr.append(tdWeight);
@@ -103,6 +93,7 @@ function randomDate(start, end) {
     }
   }
   const container:HTMLDivElement = document.getElementById("contain")
+  //built in products
   const product1 = new Product("onion", 5, 2, true, "Osem");
   const product2 = new Product("tomato", 3, 2, true, "Elite");
   const product3 = new Product("Snickers", 8, 2.5, false, "Usa");
@@ -118,20 +109,25 @@ function randomDate(start, end) {
   
   
   product1.printProductToTable(product1);
-  product1.printProductToTable(product2);
-  product1.printProductToTable(product3);
-  product1.printProductToTable(product4);
+  product2.printProductToTable(product2);
+  product3.printProductToTable(product3);
+  product4.printProductToTable(product4);
   
   const btn:HTMLButtonElement = <HTMLInputElement>document.getElementById("btn")
   const nameInput:HTMLInputElement = <HTMLInputElement>document.getElementById("name")
   const priceInput:HTMLInputElement = <HTMLInputElement>document.getElementById("price")
   const weightInput:HTMLInputElement = <HTMLInputElement>document.getElementById("weight")
- 
-//  forgot to add inputs (didnt understood the assigment)
+  
+  //  forgot to add inputs (didnt understood the assigment)
   btn.addEventListener("click",()=>{
-   const addedProduct:Product = new Product(nameInput.value, priceInput.value, weightInput.value, true, "International")
-   addedProduct.printProductToTable(addedProduct)
-   
+    const addedProduct:Product = new Product(nameInput.value, priceInput.value, weightInput.value, true, "International")
+    addedProduct.printProductToTable(addedProduct)
+    
   })
+  
+  function _getTd() {
+    const tdName: HTMLElement = document.createElement("td");
+    return tdName
+  }
   
   
