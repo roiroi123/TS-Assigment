@@ -1,0 +1,15 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "allowJs": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "target": "ES2015"
+    
+    },
+    "exclude": [
+        "dist"
+    ]
+
+
+}
