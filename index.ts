@@ -34,13 +34,7 @@ class Product {
     return (this.price / this.weight);
   }
   //higher price
-  public returnHigherPrice(pro1: Product, pro2: Product) {
-    if (pro1.price > pro2.price) {
-      return (`${pro1.name} costs more than the ${pro2.name}`);
-    } else {
-        return(`${pro2.name} costs more than the ${pro1.name}`);
-    }
-  }
+  
 // exp date 2 products
   
 public expirationDate(pro1: Product, pro2: Product) {
@@ -93,16 +87,22 @@ public expirationDate(pro1: Product, pro2: Product) {
     tBody.append(tr);
   }
 }
+function returnHigherPrice(pro1: Product, pro2: Product) {
+  if (pro1.price > pro2.price) {
+    return (`${pro1.name} costs more than the ${pro2.name}`);
+  } else {
+      return(`${pro2.name} costs more than the ${pro1.name}`);
+  }
+}
 const container:HTMLDivElement = document.getElementById("contain")
 //built in products
 const product1 = new Product("onion", 5, 2, true, "Osem");
 const product2 = new Product("tomato", 3, 2, true, "Elite");
 const product3 = new Product("Snickers", 8, 2.5, false, "Usa");
 const product4 = new Product("Banana", 2, 1.6, true, "Elite");
-
-container.innerText += product1.returnHigherPrice(product1, product2)
+container.innerText += returnHigherPrice(product1, product2)
 container.innerHTML += "<br></br>"
-container.innerText += product1.returnHigherPrice(product2, product4)
+container.innerText += returnHigherPrice(product2, product4)
 container.innerHTML += "<br></br>"
 
 
@@ -130,4 +130,5 @@ function _getTd() {
   const tdName: HTMLElement = document.createElement("td");
   return tdName
 }
+
 
